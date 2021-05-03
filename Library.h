@@ -4,21 +4,21 @@
 #include<malloc.h>
 #include<Windows.h>
 
-#define N 9
+
 typedef struct Tours Tours;
 //int trips;
 struct Tours {
 	int price;
 	char* name;
 	union {
-		char date[N];
+		char date[9];
 		int days;
 	}unite;
 	int flag;
 	Tours* next;
 };
 
-void push(Tours** plist);
+void push(Tours** plist);//to add list according to stack principles
 
 void pushSpecialDate(Tours** plist, char* namee, int pricee, char* dataa);
 
@@ -31,10 +31,7 @@ void printFull(Tours* plist);
 void print(Tours* plist, int Amount);
 
 void isEmptyPrint(Tours* list, int Amount);
-//void isEmptyDelete(Tours** list) {
-//	if (*list == NULL)
-//		printf("List is empty\n"); else delete(&list); ;
-//}
+
 void isEmptyPrintFull(Tours* list);
 
 void freeLists(Tours* plist);
