@@ -54,7 +54,7 @@ void push(Tours** plist) {
 				while (1) {
 					printf("Please,enter the start date in the format dd/mm/yy:\n");
 					rewind(stdin);
-					fgets(p->unite.date, N, stdin);
+					fgets(p->unite.date, 9, stdin);
 					if (p->unite.date[2] != '/' || p->unite.date[5] != '/' || atoi(p->unite.date) > 31 || ((p->unite.date[3] - '0') * 10 + (p->unite.date[4] - '0') > 12))
 						printf("Wrong format!Try again\n");
 					else break;
@@ -77,7 +77,7 @@ void push(Tours** plist) {
 
 	system("CLS");
 	printf("Done\n");
-	Sleep(1000);
+	Sleep(600);
 	system("CLS");
 }
 
@@ -166,7 +166,10 @@ void delete(Tours** plist) {
 			if (choice < 1)
 				continue;
 			if (amount <= 0) {
-				printf("No lists left:(\n");
+				system("CLS");
+				printf("No lists left :(\n");
+				Sleep(800);
+				system("CLS");
 				return;
 			}
 			if (amount < choice) {
@@ -194,11 +197,11 @@ void delete(Tours** plist) {
 			free(pos2);
 		}
 		system("CLS");
-		printf("Deleted\n\n");
-		Sleep(1000);
+		printf("Deleted");
+		Sleep(600);
 		system("CLS");
 		
-		//trips--;
+		
 	}
 }
 
@@ -259,16 +262,22 @@ void print(Tours* plist, int Amount) {
 }
 
 void isEmptyPrint(Tours* list, int Amount) {
-	if (list == NULL) 
+	if (list == NULL) {
+		system("CLS");
 		printf("List is empty\n");
-		
+		Sleep(800);
+		system("CLS");
+	}
 	else print(list, Amount);
 }
 
 void isEmptyPrintFull(Tours* list) {
-	if (list == NULL)
+	if (list == NULL) {
+		system("CLS");
 		printf("List is empty\n");
-		
+		Sleep(800);
+		system("CLS");
+	}
     else printFull(list);
 }
 
@@ -290,8 +299,9 @@ void freeLists(Tours* plist) {
 		current1 = current;
 		amount--;
 	}
-	printf("Done\n");
+
 	system("CLS");
+	
 }
 
 void isEmptyFree(Tours* plist) {
@@ -343,8 +353,12 @@ void Search(Tours* plist) {
 			}
 			
 		}
-		if (searchFlag == 0)
+		if (searchFlag == 0) {
+			system("CLS");
 			printf("Nothing was found :(\n\n");
+			Sleep(800);
+			system("CLS");
+		}
 		break;
 	}
 	case 2: {
@@ -364,19 +378,24 @@ void Search(Tours* plist) {
 			}
 
 		}
-		if (searchFlag == 0)
+		if (searchFlag == 0) {
+			system("CLS");
 			printf("Nothing was found :(\n\n");
+			Sleep(800);
+			system("CLS");
+		}
+
 		break;
 	}
 	case 3:
 	{
-		char datee[N];
+		char datee[9];
 		int unionFlag=0;
 		rewind(stdin);
 		while (1) {
 			printf("Please,enter the start date in the format dd/mm/yy:\n");
 			rewind(stdin);
-			fgets(datee, N, stdin);
+			fgets(datee, 9, stdin);
 			if (datee[2] != '/' ||datee[5] != '/' || atoi(datee) > 31 || ((datee[3] - '0') * 10 + (datee[4] - '0') > 12))
 				printf("Wrong format!Try again\n");
 			else break;
@@ -393,8 +412,13 @@ void Search(Tours* plist) {
 					
 			}
 		}
-		if (searchFlag == 0)
+		if (searchFlag == 0) {
+			system("CLS");
 			printf("Nothing was found :(\n\n");
+			Sleep(800);
+			system("CLS");
+		}
+			
 		break;
 	}
 	case 4: {
@@ -418,8 +442,14 @@ void Search(Tours* plist) {
 					
 			}
 		}
-		if (searchFlag == 0)
+		if (searchFlag == 0) {
+			system("CLS");
 			printf("Nothing was found :(\n\n");
+			Sleep(800);
+			system("CLS");
+		}
+
+		
 		break;
 	}
 	default:
@@ -433,7 +463,7 @@ void CompleteSearch(Tours* plist) {
 	current = plist;
 	int pricee;
 
-	char datee[N];
+	char datee[9];
 	int dayss;
 	int unionFlag;
 
@@ -444,7 +474,7 @@ void CompleteSearch(Tours* plist) {
 	int searchFlag = 0;
 
 	int Amount = 1;//for calling the function of Print
-	printf("Enter all required aspects:\n");
+	printf("Enter all required aspects:\n\n");
 	rewind(stdin);
 	printf("Enter the price:\n");
 	while (1) {
@@ -479,7 +509,8 @@ void CompleteSearch(Tours* plist) {
 	switch (unionFlag) {
 	case 0:
 		printf("Please,enter the Date of start:\n");
-		fgets(datee, N, stdin);
+		rewind(stdin);
+		fgets(datee, 9, stdin);
 		break;
 	case 1:
 		printf("Please,enter the The Tour's duration\n");
@@ -510,8 +541,13 @@ void CompleteSearch(Tours* plist) {
 				}
 		}
 	}
-	if (searchFlag == 0)
-		printf("Nothing was found :(\n");
+	if (searchFlag == 0) {
+		system("CLS");
+		printf("Nothing was found :(\n\n");
+		Sleep(800);
+		system("CLS");
+	}
+		
 	
 }
 
@@ -525,8 +561,10 @@ void inputIntoText(Tours* plist, char* arr) {
 	while (1) {
 		rewind(stdin);
 		if ((f = fopen(arr, "a+")) == NULL) {
+			system("CLS");
 			printf("Open error\n");
-			
+			Sleep(800);
+			system("CLS");
 			return 0;
 		}
 		while (current) {
@@ -558,7 +596,7 @@ void inputIntoText(Tours* plist, char* arr) {
 	}
 	system("CLS");
 	printf("Done\n");
-	Sleep(1000);
+	Sleep(600);
 	system("CLS");
 	
 }
@@ -572,20 +610,22 @@ void inputIntoBin(Tours* list, static int flagg, FILE* f) {
 	char* arr = malloc(sizeof(char));
 	char symbol;
 	int length = 1;
-	static int specialFlag = 0;
+	static int specialFlag = 0;//this thing helps me to understand that i have already raeched the end once so don't need to repeat some instrustions according to my code
 
-	p = list;
+	//Soo cause i have a stack realization i decided to input info into file in reverses order that's why i use recursions to make it real--God help me
 
-	if (specialFlag == 0)
+	p = list;//start with the beginning
+
+	if (specialFlag == 0)//we have't reached the end-go further
 		list = list->next;
-	if (list != NULL && specialFlag == 0) inputIntoBin(list, ++flagg, f);
+	if (list != NULL && specialFlag == 0) inputIntoBin(list, ++flagg, f);//we have't reached the end before and still not there(at the end) now---call the function again and get list address at this postion
 
 	i = 0;
 
-	if (list == NULL && specialFlag == 0) {
+	if (list == NULL && specialFlag == 0) {//we have reached the end for the first time
 		list = p;
-		specialFlag = 1;
-		inputIntoBin(list, ++flagg, f);
+		specialFlag = 1;//as i said before --now instructions for recersion won't work
+		inputIntoBin(list, ++flagg, f);//now we call the function with list==p
 		return;
 	}
 
@@ -622,7 +662,7 @@ void inputIntoBin(Tours* list, static int flagg, FILE* f) {
 
 	system("CLS");
 	printf("Done\n");
-	Sleep(1000);
+	Sleep(600);
 	system("CLS");
 }
 
@@ -677,7 +717,7 @@ void FileCreate(Tours* list) {
 			}
 			rewind(stdin);
 			inputIntoText(list, arr);
-			printf("Done\n");
+		
 			break;
 		}
 		else if (choice == 2) {                                                           //bINARY
@@ -724,14 +764,16 @@ void FileCreate(Tours* list) {
 			}
 			inputIntoBin(list, 1, file);
 			fclose(file);
-			printf("Done\n");
+			
 			break;
 		}
 
 		else if (choice == 3) return 0;
 		else {
+			system("CLS");
 			printf("Wrong number!\n");
-			
+			Sleep(800);
+			system("CLS");
 			return 0;
 		}
 	}
@@ -787,8 +829,10 @@ int UploadBin(Tours** list) {
 
 
 	if (!(f = fopen(arr, "rb+"))) {
+		system("CLS");
 		printf("Error opening\n");
-		
+		Sleep(800);
+		system("CLS");
 		return 0;
 	}
 
@@ -800,7 +844,10 @@ int UploadBin(Tours** list) {
 		i = 0;
 		fseek(f, -4, 1);
 		if (!(*list = (Tours*)calloc(1, sizeof(Tours)))) {
-			printf("Error");
+			system("CLS");
+			printf("Error allocating memory");
+			Sleep(800);
+			system("CLS");
 			return 0;
 		}
 		fread(&(*list)->price, sizeof(int), 1, f);
@@ -840,13 +887,14 @@ int UploadBin(Tours** list) {
 	fclose(f);
 	system("CLS");
 	printf("Done\n");
-	Sleep(1000);
+	Sleep(600);
 	system("CLS");
 	return 1;
 
 }
 
 void TextUpload(Tours** list) {
+	//here i decided to upload info with a reverse order(starting from the end and then earlier and earlier like:3--2--1--enough) 
 	char* arr;
 	char* name, * data;
 	int price;
@@ -904,7 +952,10 @@ void TextUpload(Tours** list) {
 	}
 	rewind(stdin);
 	if ((f = fopen(arr, "r+")) == NULL) {
+		system("CLS");
 		printf("Open error\n");
+		Sleep(800);
+		system("CLS");
 		return 0;
 	}
 
@@ -912,15 +963,14 @@ void TextUpload(Tours** list) {
 	while (1) {
 		fscanf(f, "%c", &symbol1);
 		if (symbol1 == '.')
-			amount1++;
+			amount1++;//amount of '.'-amount of lists "i input data into file like '1.Name:...Price:... ..'"
 		if (feof(f))
 			break;
-		//if (symbol1 == '|')                         //		
-			//break;
+		
 	}
-	// fseek(f, 7, 0);
-	fseek(f, -4, 1);
-	//fseek(f,5,1);
+
+	fseek(f, -4, 1);//we go back and back 
+	
 	while (amount1 > 0) {
 		while (1) {
 			if (flag1 == 1)
@@ -934,7 +984,7 @@ void TextUpload(Tours** list) {
 				if (symbol2 == '\n')
 					fseek(f, -1, 1);
 				if (symbol2 == '.') {
-					fgetpos(f, &current);
+					fgetpos(f, &current);//to know where was the beginning of the string on order to get there by fsetpos after i finish with current string
 					flag1 = 1;
 					break;
 				}
@@ -973,17 +1023,17 @@ void TextUpload(Tours** list) {
 						fsetpos(f, &current);
 						amount1--;
 						if (amount1 < 1) {
+							system("CLS");
 							printf("Done\n");
+							Sleep(600);
 							system("CLS");
 							return;
 						}
 
-						//fseek(f, 6, 1);
-
+						
 						break;
 					}
-					//  pushSpecial(list,name,price,data);
-
+					
 
 					data[i++] = symbol;
 
@@ -1004,13 +1054,13 @@ void TextUpload(Tours** list) {
 					fsetpos(f, &current);
 					amount1--;
 					if (amount1 < 1) {
+						system("CLS");
 						printf("Done\n");
-						
+						Sleep(800);
+						system("CLS");
 						return;
 					}
-					//fseek(f, 6, 1);
-
-
+			
 				}
 
 			}
@@ -1020,7 +1070,7 @@ void TextUpload(Tours** list) {
 	fclose(f);
 	system("CLS");
 	printf("Done\n");
-	Sleep(1000);
+	Sleep(600);
 	system("CLS");
-	//ReversePushing(list, amount);
+
 }
