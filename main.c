@@ -35,6 +35,7 @@ int main(void) {
 					if (!(scanf_s("%c", &c)) || c != 'y' && c != 'Y' && c != 'n' && c != 'N')
 						printf("Sth went wrong!Please please, try again\n"); else break;
 				}
+				system("CLS");
 				if (c == 'y' || c == 'Y')
 				Search(list);
 			
@@ -48,6 +49,7 @@ int main(void) {
 					if (!(scanf_s("%c", &c)) || c != 'y' && c != 'Y' && c != 'n' && c != 'N')
 						printf("Sth went wrong!Please please, try again\n"); else break;
 				}
+				system("CLS");
 				if (c == 'y' || c == 'Y')
 				CompleteSearch(list);
 				
@@ -55,6 +57,8 @@ int main(void) {
 			case 6:
 				system("CLS");
 				printf("Let's create a file first\n");
+				Sleep(1100);
+				system("CLS");
 				FileCreate(list);
 				system("CLS");
 				break;
@@ -67,6 +71,7 @@ int main(void) {
 					if (!scanf("%c", &c) || c != '1' && c != '2')
 						printf("Sth went wrong!Please please, try again\n"); else break;
 				}
+				system("CLS");
 				if (c == '1')
 					TextUpload(&list);
 				else
@@ -89,7 +94,6 @@ int main(void) {
 	}
 	return 0;
 }
-
 /*
 1. Добавление элементов в стек.
 
