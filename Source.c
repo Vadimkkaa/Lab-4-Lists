@@ -158,11 +158,13 @@ void delete(Tours** plist) {
 		if (!(scanf("%c", &ch)))
 			printf("Wrong letter!Try again\n"); else break;
 	}
+	system("CLS");
 	if (ch == 'y' || ch == 'Y' && amount > 0) {
 		while (1) {
 			printf("Enter the number of list you wanna delete:\n");
 			rewind(stdin);
 			scanf("%d", &choice);
+			system("CLS");
 			if (choice < 1)
 				continue;
 			if (amount <= 0) {
@@ -173,7 +175,10 @@ void delete(Tours** plist) {
 				return;
 			}
 			if (amount < choice) {
+				system("CLS");
 				printf("We don't have this amount of lists\n");
+				Sleep(1100);
+				system("CLS");
 				continue;
 			}
 
@@ -202,6 +207,12 @@ void delete(Tours** plist) {
 		system("CLS");
 		
 		
+	}
+	if (ch == 'n' || ch == 'N' && amount > 0) {
+		system("CLS");
+		printf("Ok\n");
+		Sleep(800);
+		system("CLS");
 	}
 }
 
@@ -315,13 +326,14 @@ void Search(Tours* plist) {
 	int choice;
 	int Amount = 1;
 	int searchFlag=0;
-	printf("Please,choose the parameter u wanna find by\n1-Name\n2-Price\n3-Tour's start date\n4-Tour's duration\n");
+	printf("Please,choose the parameter u wanna find by\n1-Name   2-Price   3-Tour's start date   4-Tour's duration\n");
 	rewind(stdin);
 	while (1) {
 		rewind(stdin);
 		if (!scanf("%d", &choice))
 			printf("Wrong number.Try again\n"); else break;
 	}
+	system("CLS");
 	switch (choice) {
 	case 1:
 	{
@@ -453,7 +465,10 @@ void Search(Tours* plist) {
 		break;
 	}
 	default:
+		system("CLS");
 		printf("Wrong number\n\n");
+		Sleep(800);
+		system("CLS");
 	}
 	
 }
@@ -622,10 +637,11 @@ void inputIntoBin(Tours* list, static int flagg, FILE* f) {
 
 	i = 0;
 
-	if (list == NULL && specialFlag == 0) {//we have reached the end for the first time
+	if (list == NULL) {//we have reached the end for the first time
 		list = p;
 		specialFlag = 1;//as i said before --now instructions for recersion won't work
 		inputIntoBin(list, ++flagg, f);//now we call the function with list==p
+		specialFlag = 0;
 		return;
 	}
 
@@ -660,10 +676,6 @@ void inputIntoBin(Tours* list, static int flagg, FILE* f) {
 
 	}
 
-	system("CLS");
-	printf("Done\n");
-	Sleep(600);
-	system("CLS");
 }
 
 void FileCreate(Tours* list) {
@@ -676,7 +688,7 @@ void FileCreate(Tours* list) {
 	arr = (char*)malloc(1 * sizeof(char));
 
 	while (1) {
-		printf("Please,choose the file type\n1-Text\n2-Binary\n3-Exit\n");
+		printf("Please,choose the file type\n1-Text  2-Binary  3-Exit\n");
 		rewind(stdin);
 		scanf_s("%d", &choice);
 		if (choice == 1) {                                                              //TEXT
@@ -763,6 +775,11 @@ void FileCreate(Tours* list) {
 				return 0;
 			}
 			inputIntoBin(list, 1, file);
+
+			system("CLS");
+			printf("Done\n");
+			Sleep(600);
+			system("CLS");
 			fclose(file);
 			
 			break;
@@ -1074,3 +1091,4 @@ void TextUpload(Tours** list) {
 	system("CLS");
 
 }
+
