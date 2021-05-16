@@ -1091,4 +1091,3 @@ void TextUpload(Tours** list) {
 	system("CLS");
 
 }
-
